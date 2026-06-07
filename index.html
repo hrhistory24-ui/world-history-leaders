@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>세계사 리더 성향 결과 페이지</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>WORLD HISTORY CIVILIZATION</h1>
+    <h2>세계사: 문명의 여명</h2>
+
+    <p>
+      오늘날 세계의 국가는 왜 지금의 형태를 띠게 되었을까요?
+    </p>
+
+    <p>
+      세계사 속 다양한 지도자 유형을 통해,
+      권력과 제도, 혁명과 외교, 개혁과 제국의 의미를 탐험해 봅니다.
+    </p>
+  </header>
+
+  <hr>
+
+  <main>
+
+  <section id="leader-test-section">
+    <h2>type A: WORLD HISTORY LEADER INVESTIGATION</h2>
+    <h3>세계사 리더 성향 검사</h3>
+
+    <p>
+      정답은 없습니다. 각 문항을 읽고 자신의 생각과 가장 가까운 답을 선택해 주세요.
+    </p>
+
+    <p>
+      검사를 마치면 나의 세계사 리더 유형 1~3순위가 바로 나타납니다.
+    </p>
+
+    <button type="button" onclick="startLeaderTest()">
+      검사 시작하기
+    </button>
+
+    <div id="test-area" hidden>
+      <h3>검사 문항</h3>
+
+      <form id="leader-test-form">
+        <div id="question-list">
+          <!-- script.js가 여기에 16개 문항을 자동으로 넣습니다 -->
+        </div>
+
+        <button type="button" onclick="calculateResult()">
+          결과 확인하기
+        </button>
+      </form>
+    </div>
+  </section>
+
+    <hr>
+
+<section id="result-section" hidden>
+  <h2>검사 결과 확인</h2>
+
+  <p>
+    당신의 세계사 리더 성향 결과입니다.
+  </p>
+
+  <div id="result-output">
+    <!-- script.js가 여기에 1~3순위 결과를 표시합니다 -->
+  </div>
+
+  <h3>지도자 유형 카드 보기</h3>
+
+  <p>
+    결과에 나온 유형뿐 아니라 다른 유형도 자유롭게 열람할 수 있습니다.
+  </p>
+
+  <div>
+    <button type="button" onclick="openLeaderCard('전제 군주형')">전제 군주형</button>
+    <button type="button" onclick="openLeaderCard('입헌 군주형')">입헌 군주형</button>
+    <button type="button" onclick="openLeaderCard('혁명 지도자형')">혁명 지도자형</button>
+    <button type="button" onclick="openLeaderCard('제국 건설자형')">제국 건설자형</button>
+    <button type="button" onclick="openLeaderCard('외교 전략가형')">외교 전략가형</button>
+    <button type="button" onclick="openLeaderCard('개혁 지도자형')">개혁 지도자형</button>
+    <button type="button" onclick="openLeaderCard('경제 전략가형')">경제 전략가형</button>
+    <button type="button" onclick="openLeaderCard('사상 지도자형')">사상 지도자형</button>
+  
+  </div>
+
+  </section>
+
+      <hr>
+
+      <section>
+        <h2>B타입: 세계지도로 보는 세계사</h2>
+
+        <p>
+          세계지도 기능은 나중에 제작합니다.
+          지금은 자리만 남겨둡니다.
+        </p>
+      </section>
+
+    </main>
+      
+        <dialog
+          id="leader-card-dialog"
+          style="max-width:95vw;"
+        >
+
+        <h2 id="leader-card-title">지도자 유형 카드</h2>
+
+        <img
+          id="leader-card-image"
+          src=""
+          alt="지도자 유형 카드"
+          style="max-width:100%; height:auto;"
+        >
+
+        <br><br>
+
+        <button type="button" onclick="closeLeaderCard()">
+          닫기
+        </button>
+
+      </dialog>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
