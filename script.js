@@ -461,7 +461,9 @@ function toggleMainBGM() {
     battleBgm.currentTime = 0;
 
     mainBgm.volume = 0;
-    mainBgm.play();
+    mainBgm.play().catch(function(error) {
+      console.log("main BGM 재생 실패:", error);
+    });
 
     fadeAudio(mainBgm, 0, MAIN_VOLUME, FADE_TIME);
 
@@ -492,7 +494,9 @@ function goToBattleMap() {
     mainBgm.currentTime = 0;
 
     battleBgm.volume = 0;
-    battleBgm.play();
+    battleBgm.play().catch(function(error) {
+      console.log("battle BGM 재생 실패:", error);
+    });
 
     fadeAudio(battleBgm, 0, BATTLE_VOLUME, FADE_TIME);
   });
