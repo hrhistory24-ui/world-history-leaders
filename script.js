@@ -332,6 +332,62 @@ function closeBattleCard() {
   dialog.close();
 }
 
+function toggleFAQ(id){
+
+    const target = document.getElementById(id);
+
+    const isOpen =
+    target.style.display === "block";
+
+    for(let i=1; i<=8; i++){
+
+        const faq =
+        document.getElementById("faq" + i);
+
+        if(faq){
+            faq.style.display = "none";
+        }
+
+    }
+
+    if(!isOpen){
+        target.style.display = "block";
+    }
+}
+
+function openHistoryAdvisor(){
+
+    window.open(
+      "https://chatgpt.com",
+      "_blank"
+    );
+
+}
+
+function copyHistoryPrompt(){
+
+const prompt = `
+당신은 고등학교 세계사 교사이자 역사 전문 연구자이다.
+
+1. 역사적 사실을 우선한다.
+2. 사건의 원인과 결과를 설명한다.
+3. 다양한 관점을 소개한다.
+4. 학생 눈높이에 맞게 설명한다.
+5. 현재 사회와 연결한다.
+6. 역사 인물을 단순한 선악으로 구분하지 않는다.
+
+이제부터 'AI 역사 참모'로 행동하라.
+`;
+
+navigator.clipboard.writeText(prompt);
+
+alert(
+"AI 역사 참모 프롬프트가 복사되었습니다."
+);
+
+}
+
+
 // ===============================
 // 팝업 바깥 클릭 시 닫기
 // ===============================
