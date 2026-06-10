@@ -11,39 +11,85 @@
 
 <body>
 
-  <header>
-    <h1>WORLD HISTORY CIVILIZATION</h1>
-    <h2>세계사: 문명의 여명</h2>
+  <audio id="main-bgm" src="audio/main_bgm.mp3" loop></audio>
+  <audio id="battle-bgm" src="audio/battle_bgm.mp3" loop></audio>
 
-    <p>
-      오늘날 세계의 국가는 왜 지금의 형태를 띠게 되었을까요?
-    </p>
+    <header class="hero">
 
-    <p>
-      세계사 속 다양한 지도자 유형을 통해,
-      권력과 제도, 혁명과 외교, 개혁과 제국의 의미를 탐험해 봅니다.
-    </p>
-  </header>
+      <h1>WORLD HISTORY CIVILIZATION</h1>
 
-  <hr>
+      <h2>세계사 문명 탐험관</h2>
 
-  <main>
+      <p>
+        문명의 흥망과 전쟁,
+        그리고 지도자의 선택을 탐험하는 인터랙티브 역사 체험관
+      </p>
+      <p>
+        <button type="button" id="bgm-button" onclick="toggleMainBGM()">
+        🎵 박물관 해설 시작
+        </button>
+        </p>
 
-  <section id="leader-test-section">
-    <h2>type A: WORLD HISTORY LEADER INVESTIGATION</h2>
-    <h3>세계사 리더 성향 검사</h3>
+    </header>
 
-    <p>
-      정답은 없습니다. 각 문항을 읽고 자신의 생각과 가장 가까운 답을 선택해 주세요.
-    </p>
+    <section class="intro-panel">
+      <div class="intro-panel-content">
+        <h2>안녕하십니까, 지도자시여.</h2>
 
-    <p>
-      검사를 마치면 나의 세계사 리더 유형 1~3순위가 바로 나타납니다.
-    </p>
+        <p>
+          이곳은 세계사의 거대한 흐름 속에서
+          문명과 권력, 전쟁과 선택의 의미를 탐험하는 문명 탐험관입니다.
+        </p>
 
-    <button type="button" onclick="startLeaderTest()">
-      검사 시작하기
-    </button>
+        <p>
+          당신은 이제 한 명의 관찰자가 아니라,
+          역사 속 지도자의 시선으로 세계를 바라보게 됩니다.
+          제국은 왜 성장했고, 문명은 왜 충돌했으며,
+          지도자의 선택은 어떻게 시대의 방향을 바꾸었을까요?
+        </p>
+
+        <p>
+          먼저 자신의 리더 성향을 확인한 뒤,
+          세계지도 위의 전투들을 따라가며
+          세계사의 결정적 순간들을 탐험해 보십시오.
+        </p>
+      </div>
+    </section>
+
+    <main>
+
+      <div class="dashboard-cards">
+
+      <section id="leader-test-section" class="type-card type-a">
+      <h2>
+        <span class="type-label">TYPE A</span>
+        <span class="type-title">WORLD HISTORY LEADER</span>
+      </h2>
+
+      <h3>세계사 리더 성향 검사</h3>
+      <p></p>
+      <p>
+        이 검사는 당신이 실제 역사 속 지도자라면
+        어떤 방식으로 국가를 운영하고 위기에 대응했을지를 상상해 보는 활동입니다.
+      </p>
+
+      <p>
+        강한 권력, 제도와 합의, 혁명, 외교, 경제, 사상 중
+        무엇을 더 중요하게 여기는지에 따라
+        당신의 지도자 유형이 달라집니다.
+      </p>
+
+      <p>
+        정답은 없습니다. 각 문항을 읽고 자신의 생각과 가장 가까운 답을 선택해 주세요.
+      </p>
+
+      <p>
+        검사를 마치면 나의 세계사 리더 유형 1~3순위가 바로 나타납니다.
+      </p>
+
+      <button type="button" onclick="startLeaderTest()">
+        검사 시작하기
+      </button>
 
     <div id="test-area" hidden>
       <h3>검사 문항</h3>
@@ -60,10 +106,18 @@
     </div>
   </section>
 
-    <hr>
+  </div>
 
-<section id="result-section" hidden>
-  <h2>검사 결과 확인</h2>
+  <hr>
+
+<section
+  id="result-section"
+  class="type-card"
+  hidden>
+  <h2>
+  <span class="type-label">RESULT</span>
+  <span class="type-title">YOUR LEADER PROFILE</span>
+</h2>
 
   <p>
     당신의 세계사 리더 성향 결과입니다.
@@ -96,28 +150,43 @@
 
 <hr>
 
-<h2>지도자님의 리더 유형을 파악하셨나요?</h2>
+  <div class="dashboard-cards">
 
-<p>
-이제 지도자님이 어떤 성향을 갖고 정국을 운영하셔야 할지 대강 감이 잡히셨을 겁니다.
-</p>
+    <section class="type-card type-b">
+      <h2>
+        <span class="type-label">TYPE B</span>
+        <span class="type-title">BATTLES THAT CHANGED THE WORLD</span>
+      </h2>
 
-<p>
-하지만 지도자의 성향과 그에 따른 선택만으로 역사가 만들어지지는 않습니다.
-전쟁은 때로 문명의 운명을 바꾸었고,
-세계의 질서를 새롭게 만들었습니다.
-</p>
+      <h3>세계를 뒤바꾼 주요 전투</h3>
 
-<p>
-이제 청동 전략말을 선택하여
-역사의 분기점이 된 전투들을 탐험해 보세요.
-</p>
+      <p>
+        지도자님의 리더 유형을 파악하셨나요?
+      </p>
+
+      <p>
+        하지만 지도자의 성향과 선택만으로는 역사가 만들어지지 않습니다.
+        전쟁은 때로 문명의 운명을 바꾸었고,
+        세계의 질서를 새롭게 만들었습니다.
+      </p>
+
+      <p>
+        이제 청동 전략말을 선택하여
+        역사의 분기점이 된 전투들을 탐험해 보세요.
+      </p>
+
+        <button type="button" onclick="goToBattleMap()">
+          세계의 전투 보러 가기
+        </button>
+    </section>
+
+  </div>
+
+
 
       <hr>
 
     <section id="battle-map-section">
-    <h2>type B: Battles That Changed the World</h2>
-    <h3>세계를 뒤바꾼 주요 전투</h3>
 
     <p>
       청동 전략말을 선택하여 세계사의 분기점이 된 전투를 탐험해 보세요.
@@ -164,10 +233,25 @@
   </div>
 </div>
 
+<div class="battle-legend">
+
+  <span>🪖 고대 전투</span>
+
+  <span>♞ 중세 전투</span>
+
+  <span>⛵ 해양 제국</span>
+
+  <span>💣 근대 전쟁</span>
+
+  <span>✈ 현대 전쟁</span>
+
+</div>
+
   </section>
 
       <hr>
-
+    <div class="bottom-panels">
+      <section class="type-card type-c">
     <h2>TYPE C : WORLD HISTORY FAQ</h2>
 
     <p>
@@ -252,25 +336,31 @@
     AI는 정보를 제공하지만 인간은 역사적 맥락과 가치 판단을 수행해야 합니다.
     </div>
 
-    <hr>
+      </section>
 
-    <hr>
+      <section class="type-card ai-panel">
 
-    <h2>AI 역사 참모</h2>
+        <div class="ai-panel-top">
 
-    <p>
-    세계사와 관련된 궁금한 점을 AI 역사 참모에게 물어보세요.
-    </p>
+          <h2>AI 역사 참모</h2>
 
-    <button type="button" onclick="copyHistoryPrompt()">
-    📋 역사 참모 프롬프트 복사
-    </button>
+          <p>
+            세계사와 관련된 궁금한 점을
+            AI 역사 참모에게 물어보세요.
+          </p>
 
-    <button type="button" onclick="openHistoryAdvisor()">
-    🎖 AI 역사 참모 열기
-    </button>
+          <button type="button" onclick="copyHistoryPrompt()">
+            📋 역사 참모 프롬프트 복사
+          </button>
 
-    <hr>
+          <button type="button" onclick="openHistoryAdvisor()">
+            🎖 AI 역사 참모 열기
+          </button>
+
+        </div>
+
+      </section>
+    </div>
 
     </main>
       

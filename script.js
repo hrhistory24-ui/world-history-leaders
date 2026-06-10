@@ -412,3 +412,96 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+function scrollToBattleMap() {
+  const battleMapSection = document.getElementById("battle-map-section");
+
+  battleMapSection.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+
+let isBgmOn = false;
+
+const MAIN_VOLUME = 0.55;
+const BATTLE_VOLUME = 0.42;
+const FADE_TIME = 900;
+const FADE_STEP = 30;
+
+function fadeAudio(audio, from, to, duration, callback) {
+  const steps = duration / FADE_STEP;
+  const volumeStep = (to - from) / steps;
+
+  let currentStep = 0;
+  audio.volume = from;
+
+  const fade = setInterval(function () {
+    currentStep++;
+    audio.volume = Math.min(1, Math.max(0, audio.volume + volumeStep));
+
+    if (currentStep >= steps) {
+      clearInterval(fade);
+      audio.volume = to;
+
+      if (callback) {
+        callback();
+      }
+    }
+  }, FADE_STEP);
+}
+
+function toggleMainBGM() {
+  const mainBgm = document.getElementById("main-bgm");
+  const battleBgm = document.getElementById("battle-bgm");
+  const bgmButton = document.getElementById("bgm-button");
+
+  if (!isBgmOn) {
+    battleBgm.pause();
+    battleBgm.currentTime = 0;
+
+    mainBgm.volume = 0;
+    mainBgm.play();
+
+    fadeAudio(mainBgm, 0, MAIN_VOLUME, FADE_TIME);
+
+    isBgmOn = true;
+    bgmButton.textContent = "BGM OFF";
+  } else {
+    fadeAudio(mainBgm, mainBgm.volume, 0, FADE_TIME, function () {
+      mainBgm.pause();
+    });
+
+    fadeAudio(battleBgm, battleBgm.volume, 0, FADE_TIME, function () {
+      battleBgm.pause();
+    });
+
+    isBgmOn = false;
+    bgmButton.textContent = "BGM ON";
+  }
+}
+
+function goToBattleMap() {
+  const mainBgm = document.getElementById("main-bgm");
+  const battleBgm = document.getElementById("battle-bgm");
+  const bgmButton = document.getElementById("bgm-button");
+  const battleMapSection = document.getElementById("battle-map-section");
+
+  fadeAudio(mainBgm, mainBgm.volume, 0, FADE_TIME, function () {
+    mainBgm.pause();
+    mainBgm.currentTime = 0;
+
+    battleBgm.volume = 0;
+    battleBgm.play();
+
+    fadeAudio(battleBgm, 0, BATTLE_VOLUME, FADE_TIME);
+  });
+
+  isBgmOn = true;
+  bgmButton.textContent = "BGM OFF";
+
+  battleMapSection.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
