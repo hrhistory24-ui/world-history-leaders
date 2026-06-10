@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>세계사 리더 성향 결과 페이지</title>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -93,14 +95,56 @@
 
       <hr>
 
-      <section>
-        <h2>B타입: 세계지도로 보는 세계사</h2>
+  <section id="battle-map-section">
+    <h2>Battles That Changed the World</h2>
+    <h3>세계를 뒤바꾼 주요 전투</h3>
 
-        <p>
-          세계지도 기능은 나중에 제작합니다.
-          지금은 자리만 남겨둡니다.
-        </p>
-      </section>
+    <p>
+      청동 전략말을 선택하여 세계사의 분기점이 된 전투를 탐험해 보세요.
+    </p>
+
+<div id="battle-map-container">
+  <img
+    src="images/maps/world-map-parchment.jpg"
+    alt="양피지 세계지도"
+  >
+
+  <div id="battle-dot-layer">
+
+    <!-- 고대: 투구 -->
+<button class="battle-piece" style="left: 23%; top: 40%;" onclick="openBattleCard('마라톤 전투')" title="마라톤 전투"><img src="images/pieces/helmet.png" alt="마라톤 전투"></button>
+<button class="battle-piece" style="left: 20%; top: 39%;" onclick="openBattleCard('칸나에 전투')" title="칸나에 전투"><img src="images/pieces/helmet.png" alt="칸나에 전투"></button>
+<button class="battle-piece" style="left: 35%; top: 48%;" onclick="openBattleCard('알렉산드로스 인도 원정')" title="알렉산드로스 인도 원정"><img src="images/pieces/helmet.png" alt="알렉산드로스 인도 원정"></button>
+
+<!-- 중세·기마: 기사 -->
+<button class="battle-piece" style="left: 28%; top: 48%;" onclick="openBattleCard('하틴 전투')" title="하틴 전투"><img src="images/pieces/knight.png" alt="하틴 전투"></button>
+<button class="battle-piece" style="left: 34%; top: 36%;" onclick="openBattleCard('탈라스 전투')" title="탈라스 전투"><img src="images/pieces/knight.png" alt="탈라스 전투"></button>
+<button class="battle-piece" style="left: 23%; top: 33%;" onclick="openBattleCard('레그니차 전투')" title="레그니차 전투"><img src="images/pieces/knight.png" alt="레그니차 전투"></button>
+<button class="battle-piece" style="left: 47%; top: 38%;" onclick="openBattleCard('사르후 전투')" title="사르후 전투"><img src="images/pieces/knight.png" alt="사르후 전투"></button>
+<button class="battle-piece" style="left: 50%; top: 42%;" onclick="openBattleCard('세키가하라 전투')" title="세키가하라 전투"><img src="images/pieces/knight.png" alt="세키가하라 전투"></button>
+
+<!-- 해양 제국: 범선 -->
+<button class="battle-piece" style="left: 15%; top: 42%;" onclick="openBattleCard('트라팔가르 해전')" title="트라팔가르 해전"><img src="images/pieces/ship.png" alt="트라팔가르 해전"></button>
+<button class="battle-piece" style="left: 38%; top: 49%;" onclick="openBattleCard('플라시 전투')" title="플라시 전투"><img src="images/pieces/ship.png" alt="플라시 전투"></button>
+<button class="battle-piece" style="left: 85%; top: 41%;" onclick="openBattleCard('요크타운 전투')" title="요크타운 전투"><img src="images/pieces/ship.png" alt="요크타운 전투"></button>
+<button class="battle-piece" style="left: 45%; top: 41%;" onclick="openBattleCard('웨이하이웨이 전투')" title="웨이하이웨이 전투"><img src="images/pieces/ship.png" alt="웨이하이웨이 전투"></button>
+
+<!-- 근대: 대포 -->
+<button class="battle-piece cannon-piece" style="left: 18%; top: 34%;" onclick="openBattleCard('워털루 전투')" title="워털루 전투"><img src="images/pieces/cannon.png" alt="워털루 전투"></button>
+<button class="battle-piece cannon-piece" style="left: 25%; top: 36%;" onclick="openBattleCard('알마 전투')" title="알마 전투"><img src="images/pieces/cannon.png" alt="알마 전투"></button>
+<button class="battle-piece cannon-piece" style="left: 23%; top: 73%;" onclick="openBattleCard('이산들와나 전투')" title="이산들와나 전투"><img src="images/pieces/cannon.png" alt="이산들와나 전투"></button>
+<button class="battle-piece cannon-piece" style="left: 80%; top: 50%;" onclick="openBattleCard('차풀테펙 전투')" title="차풀테펙 전투"><img src="images/pieces/cannon.png" alt="차풀테펙 전투"></button>
+
+<!-- 현대: 전투기 -->
+<button class="battle-piece" style="left: 20%; top: 34%;" onclick="openBattleCard('베르됭 전투')" title="베르됭 전투"><img src="images/pieces/plane.png" alt="베르됭 전투"></button>
+<button class="battle-piece" style="left: 28%; top: 34%;" onclick="openBattleCard('스탈린그라드 전투')" title="스탈린그라드 전투"><img src="images/pieces/plane.png" alt="스탈린그라드 전투"></button>
+<button class="battle-piece" style="left: 15%; top: 34%;" onclick="openBattleCard('노르망디 상륙작전')" title="노르망디 상륙작전"><img src="images/pieces/plane.png" alt="노르망디 상륙작전"></button>
+<button class="battle-piece" style="left: 61%; top: 46%;" onclick="openBattleCard('미드웨이 해전')" title="미드웨이 해전"><img src="images/pieces/plane.png" alt="미드웨이 해전"></button>
+<button class="battle-piece" style="left: 46%; top: 33%;" onclick="openBattleCard('노몬한 전투')" title="노몬한 전투"><img src="images/pieces/plane.png" alt="노몬한 전투"></button>
+  </div>
+</div>
+
+  </section>
 
     </main>
       
@@ -120,8 +164,27 @@
 
         <br><br>
 
-        <button type="button" onclick="closeLeaderCard()">
-          닫기
+        <button type="button" class="popup-close-button" onclick="closeLeaderCard()">
+          ×
+        </button>
+
+      </dialog>
+
+      <dialog id="battle-card-dialog">
+
+        <h2 id="battle-card-title"></h2>
+
+        <img
+          id="battle-card-image"
+          src=""
+          alt=""
+          style="max-width:100%; height:auto;"
+        >
+
+        <br><br>
+
+        <button type="button" class="popup-close-button" onclick="closeBattleCard()">
+          ×
         </button>
 
       </dialog>

@@ -279,3 +279,80 @@ function closeLeaderCard() {
   const dialog = document.getElementById("leader-card-dialog");
   dialog.close();
 }
+
+function openBattleCard(battleName) {
+
+  const dialog =
+    document.getElementById("battle-card-dialog");
+
+  const title =
+    document.getElementById("battle-card-title");
+
+  const image =
+    document.getElementById("battle-card-image");
+
+  const imageMap = {
+    "마라톤 전투": "images/battles/marathon.jpg",
+    "칸나에 전투": "images/battles/cannae.jpg",
+    "알렉산드로스 인도 원정": "images/battles/alexander-india.jpg",
+
+    "하틴 전투": "images/battles/hattin.jpg",
+    "탈라스 전투": "images/battles/talas.jpg",
+    "레그니차 전투": "images/battles/legnica.jpg",
+    "사르후 전투": "images/battles/sarhu.jpg",
+    "세키가하라 전투": "images/battles/sekigahara.jpg",
+
+    "트라팔가르 해전": "images/battles/trafalgar.jpg",
+    "플라시 전투": "images/battles/plassey.jpg",
+    "요크타운 전투": "images/battles/yorktown.jpg",
+    "웨이하이웨이 전투": "images/battles/weihaiwei.jpg",
+
+    "워털루 전투": "images/battles/waterloo.jpg",
+    "알마 전투": "images/battles/alma.jpg",
+    "이산들와나 전투": "images/battles/isandlwana.jpg",
+    "차풀테펙 전투": "images/battles/chapultepec.jpg",
+
+    "베르됭 전투": "images/battles/verdun.jpg",
+    "스탈린그라드 전투": "images/battles/stalingrad.jpg",
+    "노르망디 상륙작전": "images/battles/normandy.jpg",
+    "마켓가든 작전": "images/battles/market-garden.jpg",
+    "미드웨이 해전": "images/battles/midway.jpg",
+    "노몬한 전투": "images/battles/nomonhan.jpg"
+  };
+
+  title.textContent = battleName;
+
+  image.src = imageMap[battleName];
+
+  dialog.showModal();
+}
+
+function closeBattleCard() {
+  const dialog = document.getElementById("battle-card-dialog");
+  dialog.close();
+}
+
+// ===============================
+// 팝업 바깥 클릭 시 닫기
+// ===============================
+
+document.addEventListener("DOMContentLoaded", function () {
+  const leaderDialog = document.getElementById("leader-card-dialog");
+  const battleDialog = document.getElementById("battle-card-dialog");
+
+  if (leaderDialog) {
+    leaderDialog.addEventListener("click", function (event) {
+      if (event.target === leaderDialog) {
+        leaderDialog.close();
+      }
+    });
+  }
+
+  if (battleDialog) {
+    battleDialog.addEventListener("click", function (event) {
+      if (event.target === battleDialog) {
+        battleDialog.close();
+      }
+    });
+  }
+});
