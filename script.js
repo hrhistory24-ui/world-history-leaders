@@ -543,3 +543,24 @@ function goToBattleMap() {
     block: "start"
   });
 }
+
+// ===============================
+// 전투 피스 이름표 자동 생성
+// ===============================
+
+document.addEventListener("DOMContentLoaded", function () {
+  const battlePieces = document.querySelectorAll(".battle-piece");
+
+  battlePieces.forEach(function (piece) {
+    const img = piece.querySelector("img");
+
+    const battleName =
+      piece.getAttribute("title") ||
+      (img ? img.getAttribute("alt") : "");
+
+    piece.setAttribute("data-battle-name", battleName);
+
+    // 기본 브라우저 작은 툴팁이 같이 뜨는 것을 방지
+    piece.removeAttribute("title");
+  });
+});
