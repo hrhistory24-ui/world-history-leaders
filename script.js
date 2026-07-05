@@ -306,6 +306,8 @@ function openLeaderCard(leaderName) {
   image.src = imageMap[leaderName];
   image.alt = leaderName + " 카드";
 
+  resetZoomableImage(image);
+
   dialog.showModal();
 }
 
@@ -357,6 +359,8 @@ function openBattleCard(battleName) {
   title.textContent = battleName;
 
   image.src = imageMap[battleName];
+
+  resetZoomableImage(image);
 
   dialog.showModal();
 }
@@ -563,4 +567,177 @@ document.addEventListener("DOMContentLoaded", function () {
     // 기본 브라우저 작은 툴팁이 같이 뜨는 것을 방지
     piece.removeAttribute("title");
   });
+});
+
+// ===============================
+// 그림카드 확대/축소 + 드래그 이동
+// 마우스: 휠 확대/축소, 왼쪽 클릭 드래그 이동
+// 터치: 두 손가락 확대/축소, 한 손가락 드래그 이동
+// ===============================
+
+function resetZoomableImage(img) {
+  img.dataset.scale = "1";
+  img.dataset.translateX = "0";
+  img.dataset.translateY = "0";
+
+  img.style.transform = "translate(0px, 0px) scale(1)";
+}
+
+function applyZoomTransform(img) {
+  const scale = Number(img.dataset.scale || 1);
+  const translateX = Number(img.dataset.translateX || 0);
+  const translateY = Number(img.dataset.translateY || 0);
+
+  img.style.transform =
+    `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+}
+
+function setupZoomableImage(img) {
+  let isDragging = false;
+
+  let startX = 0;
+  let startY = 0;
+
+  let startTranslateX = 0;
+  let startTranslateY = 0;
+
+  let activePointers = new Map();
+
+  let pinchStartDistance = 0;
+  let pinchStartScale = 1;
+
+  // 마우스 휠 확대/축소
+  img.addEventListener("wheel", function (event) {
+    event.preventDefault();
+
+    const currentScale = Number(img.dataset.scale || 1);
+
+    const zoomAmount = event.deltaY < 0 ? 0.12 : -0.12;
+
+    let newScale = currentScale + zoomAmount;
+
+    newScale = Math.max(1, Math.min(newScale, 4));
+
+    img.dataset.scale = String(newScale);
+
+    applyZoomTransform(img);
+  }, { passive: false });
+
+  // 마우스/터치 시작
+  img.addEventListener("pointerdown", function (event) {
+    event.preventDefault();
+
+    img.setPointerCapture(event.pointerId);
+
+    activePointers.set(event.pointerId, {
+      x: event.clientX,
+      y: event.clientY
+    });
+
+    if (activePointers.size === 1) {
+      isDragging = true;
+
+      startX = event.clientX;
+      startY = event.clientY;
+
+      startTranslateX = Number(img.dataset.translateX || 0);
+      startTranslateY = Number(img.dataset.translateY || 0);
+    }
+
+    if (activePointers.size === 2) {
+      const points = Array.from(activePointers.values());
+
+      pinchStartDistance = getDistance(points[0], points[1]);
+      pinchStartScale = Number(img.dataset.scale || 1);
+
+      isDragging = false;
+    }
+  });
+
+  // 마우스/터치 이동
+  img.addEventListener("pointermove", function (event) {
+    if (!activePointers.has(event.pointerId)) {
+      return;
+    }
+
+    activePointers.set(event.pointerId, {
+      x: event.clientX,
+      y: event.clientY
+    });
+
+    // 두 손가락 확대/축소
+    if (activePointers.size === 2) {
+      const points = Array.from(activePointers.values());
+
+      const currentDistance = getDistance(points[0], points[1]);
+
+      if (pinchStartDistance > 0) {
+        let newScale =
+          pinchStartScale * (currentDistance / pinchStartDistance);
+
+        newScale = Math.max(1, Math.min(newScale, 4));
+
+        img.dataset.scale = String(newScale);
+
+        applyZoomTransform(img);
+      }
+
+      return;
+    }
+
+    // 한 손가락 또는 마우스 드래그 이동
+    if (isDragging) {
+      const currentScale = Number(img.dataset.scale || 1);
+
+      // 확대된 상태에서만 이동
+      if (currentScale <= 1) {
+        return;
+      }
+
+      const moveX = event.clientX - startX;
+      const moveY = event.clientY - startY;
+
+      img.dataset.translateX = String(startTranslateX + moveX);
+      img.dataset.translateY = String(startTranslateY + moveY);
+
+      applyZoomTransform(img);
+    }
+  });
+
+  // 마우스/터치 종료
+  img.addEventListener("pointerup", function (event) {
+    activePointers.delete(event.pointerId);
+    isDragging = false;
+  });
+
+  img.addEventListener("pointercancel", function (event) {
+    activePointers.delete(event.pointerId);
+    isDragging = false;
+  });
+
+  img.addEventListener("pointerleave", function () {
+    if (activePointers.size === 0) {
+      isDragging = false;
+    }
+  });
+}
+
+function getDistance(pointA, pointB) {
+  const dx = pointA.x - pointB.x;
+  const dy = pointA.y - pointB.y;
+
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const leaderCardImage = document.getElementById("leader-card-image");
+  const battleCardImage = document.getElementById("battle-card-image");
+
+  if (leaderCardImage) {
+    setupZoomableImage(leaderCardImage);
+  }
+
+  if (battleCardImage) {
+    setupZoomableImage(battleCardImage);
+  }
 });

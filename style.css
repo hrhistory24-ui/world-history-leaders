@@ -799,3 +799,287 @@ hr {
   position: relative;
   z-index: 1;
 }
+
+/* =====================
+   결과 영역 지도자 카드 버튼 강조
+===================== */
+
+#result-section {
+  text-align: center;
+}
+
+#result-section button {
+  display: inline-block;
+
+  margin: 8px 6px;
+  padding: 14px 22px;
+
+  min-width: 150px;
+
+  font-size: 17px;
+  font-weight: 900;
+
+  border-radius: 12px;
+  border: 2px solid #5d4024;
+
+  background:
+    linear-gradient(
+      #e8c47a,
+      #b98232
+    );
+
+  color: #1e1408;
+
+  box-shadow:
+    0 5px 12px rgba(0,0,0,0.22),
+    inset 0 0 8px rgba(255,255,255,0.35);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+#result-section button:hover {
+  transform: translateY(-2px) scale(1.04);
+
+  background:
+    linear-gradient(
+      #f0d08b,
+      #9d6424
+    );
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.3),
+    inset 0 0 8px rgba(255,255,255,0.45);
+}
+
+/* 히든 유형 카드 보기 버튼은 더 크게 */
+#result-output button {
+  display: block;
+
+  margin: 24px auto 28px;
+  padding: 18px 34px;
+
+  min-width: 280px;
+
+  font-size: 20px;
+  border-radius: 16px;
+}
+
+/* =====================
+   그림카드 팝업 양피지 배경 + 확대 이동
+===================== */
+
+#leader-card-dialog,
+#battle-card-dialog {
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,0.22), transparent 58%),
+    linear-gradient(
+      #ead7a8,
+      #c7a76a
+    );
+
+  border: 6px double #6b4a28;
+  border-radius: 18px;
+
+  padding: 26px;
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.45),
+    inset 0 0 25px rgba(255,255,255,0.28);
+
+  overflow: hidden;
+}
+
+#leader-card-dialog::backdrop,
+#battle-card-dialog::backdrop {
+  background: rgba(21, 14, 7, 0.72);
+}
+
+#leader-card-image:active,
+#battle-card-image:active {
+  cursor: grabbing;
+}
+
+/* 팝업 닫기 버튼이 이미지 확대보다 항상 위에 오도록 */
+.popup-close-button {
+  z-index: 9999;
+}
+
+/* =====================
+   그림카드 팝업 확대 전용 넓은 액자
+===================== */
+
+#leader-card-dialog,
+#battle-card-dialog {
+  width: 96vw;
+  height: 94vh;
+
+  max-width: 96vw;
+  max-height: 94vh;
+
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,0.18), transparent 60%),
+    linear-gradient(
+      #ead7a8,
+      #c7a76a
+    );
+
+  border: 6px double #6b4a28;
+  border-radius: 18px;
+
+  padding: 18px;
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.48),
+    inset 0 0 25px rgba(255,255,255,0.25);
+
+  overflow: hidden;
+}
+
+#leader-card-dialog::backdrop,
+#battle-card-dialog::backdrop {
+  background: rgba(21, 14, 7, 0.76);
+}
+
+/* 이미지가 움직일 수 있는 넓은 무대 */
+#leader-card-dialog,
+#battle-card-dialog {
+  box-sizing: border-box;
+}
+
+/* 그림카드 이미지 */
+#leader-card-image,
+#battle-card-image {
+  display: block;
+
+  max-width: calc(96vw - 60px);
+  max-height: calc(94vh - 60px);
+
+  width: auto;
+  height: auto;
+
+  margin: 0 auto;
+
+  cursor: grab;
+
+  user-select: none;
+  touch-action: none;
+
+  transform-origin: center center;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.38);
+}
+
+#leader-card-image:active,
+#battle-card-image:active {
+  cursor: grabbing;
+}
+
+/* 팝업 닫기 버튼 */
+.popup-close-button {
+  position: fixed;
+
+  top: 24px;
+  right: 24px;
+
+  z-index: 9999;
+}
+
+/* =====================
+   FAQ / AI 참모 버튼 크기 확대
+===================== */
+
+/* FAQ 버튼 크게 */
+.type-c button {
+  display: block;
+
+  width: 100%;
+
+  margin: 14px 0;
+  padding: 15px 20px;
+
+  font-size: 16px;
+  font-weight: 900;
+
+  border-radius: 8px;
+  border: 2px solid #5d4024;
+
+  background:
+    linear-gradient(
+      #e4bd72,
+      #a8752f
+    );
+
+  color: #1e1408;
+
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.22),
+    inset 0 0 8px rgba(255,255,255,0.35);
+
+  cursor: pointer;
+}
+
+/* FAQ 버튼에 마우스를 올렸을 때 */
+.type-c button:hover {
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(
+      #f0cf86,
+      #8f5d22
+    );
+
+  box-shadow:
+    0 7px 15px rgba(0,0,0,0.3),
+    inset 0 0 8px rgba(255,255,255,0.45);
+}
+
+/* AI 역사 참모 버튼 크게 */
+.ai-panel button {
+  display: inline-block;
+
+  margin: 10px 8px 10px 0;
+  padding: 15px 22px;
+
+  font-size: 16px;
+  font-weight: 900;
+
+  border-radius: 10px;
+  border: 2px solid #5d4024;
+
+  background:
+    linear-gradient(
+      #e4bd72,
+      #a8752f
+    );
+
+  color: #1e1408;
+
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.22),
+    inset 0 0 8px rgba(255,255,255,0.35);
+
+  cursor: pointer;
+}
+
+/* AI 버튼에 마우스를 올렸을 때 */
+.ai-panel button:hover {
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(
+      #f0cf86,
+      #8f5d22
+    );
+
+  box-shadow:
+    0 7px 15px rgba(0,0,0,0.3),
+    inset 0 0 8px rgba(255,255,255,0.45);
+}
