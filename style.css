@@ -1083,3 +1083,306 @@ hr {
     0 7px 15px rgba(0,0,0,0.3),
     inset 0 0 8px rgba(255,255,255,0.45);
 }
+
+/* =====================
+   FAQ 양피지 팝업
+===================== */
+
+.faq-dialog {
+  width: min(900px, 92vw);
+  height: min(720px, 86vh);
+
+  max-width: 92vw;
+  max-height: 86vh;
+
+  padding: 0;
+
+  border: 7px double #6b4a28;
+  border-radius: 20px;
+
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,0.28), transparent 62%),
+    linear-gradient(
+      #f3dfad,
+      #d0ad6e
+    );
+
+  box-shadow:
+    0 22px 55px rgba(0,0,0,0.52),
+    inset 0 0 28px rgba(255,255,255,0.32);
+
+  overflow: hidden;
+}
+
+.faq-dialog::backdrop {
+  background: rgba(24, 15, 7, 0.72);
+}
+
+.faq-dialog-inner {
+  height: 100%;
+
+  box-sizing: border-box;
+
+  padding: 42px 52px 38px;
+
+  background:
+    linear-gradient(
+      rgba(255, 248, 220, 0.72),
+      rgba(238, 213, 160, 0.72)
+    );
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+#faq-dialog-title {
+  margin: 0 0 28px;
+
+  text-align: center;
+
+  font-size: clamp(24px, 3vw, 36px);
+  color: #4b2d13;
+
+  line-height: 1.35;
+}
+
+#faq-dialog-title::after {
+  content: "";
+
+  display: block;
+
+  width: 120px;
+  height: 2px;
+
+  margin: 16px auto 0;
+
+  background: #7a5936;
+}
+
+#faq-dialog-content {
+  font-size: 19px;
+  line-height: 1.95;
+
+  color: #2d2115;
+
+  text-align: left;
+}
+
+#faq-dialog-content p {
+  margin: 18px 0;
+}
+
+.faq-close-button {
+  position: fixed;
+
+  top: calc(7vh + 8px);
+  right: calc(4vw + 8px);
+
+  width: 46px;
+  height: 46px;
+
+  border: 2px solid #d8b66d;
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle at center, #5d4024, #2d1a0b);
+
+  color: #fff3c7;
+
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 40px;
+
+  cursor: pointer;
+
+  z-index: 10000;
+
+  box-shadow:
+    0 7px 16px rgba(0,0,0,0.45),
+    inset 0 0 8px rgba(255,255,255,0.2);
+}
+
+.faq-close-button:hover {
+  background:
+    radial-gradient(circle at center, #8b1e1e, #3a0c0c);
+
+  transform: scale(1.06);
+}
+
+/* 태블릿 / 모바일 대응 */
+@media (max-width: 700px) {
+  .faq-dialog {
+    width: 94vw;
+    height: 88vh;
+  }
+
+  .faq-dialog-inner {
+    padding: 34px 26px 30px;
+  }
+
+  #faq-dialog-content {
+    font-size: 17px;
+    line-height: 1.85;
+  }
+
+  .faq-close-button {
+    top: 18px;
+    right: 18px;
+  }
+}
+
+/* =====================
+   FAQ 전체폭 + 질문 버튼 2열 배치
+   현재 index 구조 유지용
+===================== */
+
+/* FAQ와 AI 참모를 좌우 배치하지 않고 위아래 배치 */
+.bottom-panels {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+
+  gap: 36px;
+
+  max-width: 1400px;
+  margin: 40px auto;
+}
+
+/* FAQ 카드 자체를 2열 버튼 그리드로 사용 */
+.type-c {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 20px 24px;
+
+  padding: 46px 52px;
+
+  min-height: auto;
+}
+
+/* FAQ 제목과 안내 문구는 2열 전체를 사용 */
+.type-c > h2,
+.type-c > p {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+/* 기존에 버튼 사이에 넣은 br 제거 효과 */
+.type-c br {
+  display: none;
+}
+
+/* 숨겨진 FAQ 답변 div는 화면 배치에 영향 주지 않게 유지 */
+.type-c > div[id^="faq"] {
+  display: none !important;
+}
+
+/* FAQ 질문 버튼 2열용 디자인 */
+.type-c button {
+  width: 100%;
+
+  min-height: 72px;
+
+  display: flex;
+  align-items: center;
+
+  margin: 0;
+  padding: 18px 22px;
+
+  text-align: left;
+
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.45;
+
+  border-radius: 12px;
+  border: 2px solid #5d4024;
+
+  background:
+    linear-gradient(
+      #e7c17a,
+      #a8752f
+    );
+
+  color: #1e1408;
+
+  box-shadow:
+    0 6px 14px rgba(0,0,0,0.24),
+    inset 0 0 9px rgba(255,255,255,0.38);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.type-c button:hover {
+  transform: translateY(-3px) scale(1.02);
+
+  background:
+    linear-gradient(
+      #f0d08b,
+      #8f5d22
+    );
+
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.32),
+    inset 0 0 10px rgba(255,255,255,0.45);
+}
+
+/* AI 역사 참모를 FAQ 아래 넓은 카드로 배치 */
+.ai-panel {
+  min-height: 520px;
+
+  padding: 48px 56px;
+
+  background-position: center bottom;
+}
+
+.ai-panel .ai-panel-top {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ai-panel p {
+  max-width: 760px;
+  margin: 24px auto;
+  text-align: center;
+}
+
+/* AI 버튼도 넓은 카드에 맞게 조금 강조 */
+.ai-panel button {
+  display: inline-block;
+
+  margin: 10px 8px;
+  padding: 16px 26px;
+
+  font-size: 17px;
+  font-weight: 900;
+
+  border-radius: 12px;
+}
+
+/* 태블릿 / 모바일에서는 FAQ 질문 1열 */
+@media (max-width: 800px) {
+  .type-c {
+    grid-template-columns: 1fr;
+
+    padding: 34px 24px;
+  }
+
+  .type-c button {
+    min-height: 66px;
+    font-size: 16px;
+  }
+
+  .ai-panel {
+    min-height: 460px;
+    padding: 38px 26px;
+  }
+}
